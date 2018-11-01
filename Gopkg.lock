@@ -3,7 +3,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f4ea91161582941ddbad297849bf0008a4f41b5f967172499b40b3a8b62f028d"
+  digest = "1:70f835cdfea84374efac7eb7a20c22e95008beeb398557199da7e7f5cfda3b33"
   name = "github.com/frozzare/go"
   packages = [
     "cast",
@@ -12,7 +12,7 @@
     "structs",
   ]
   pruneopts = "UT"
-  revision = "e8a1e21a5c40ea637242d73fdaf6b678127df21c"
+  revision = "d84f6a8402f7d9605d76f1414d13d17c0f90679d"
 
 [[projects]]
   digest = "1:ecd9aa82687cf31d1585d4ac61d0ba180e42e8a6182b85bd785fcca8dfeefc1b"
