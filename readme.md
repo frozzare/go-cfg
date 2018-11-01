@@ -8,41 +8,42 @@ A configuration package that can populate values from byte slices, key/value map
 package main
 
 import (
+	"fmt"
 	"net/url"
-    "os"
-    
-    "github.com/frozzare/go-cfg"
+	"os"
+
+	"github.com/frozzare/go-cfg"
 )
 
 type MyConfig struct {
-    Name string
-    URL  *url.URL
+	Name string
+	URL  url.URL
 }
 
 func main() {
-    mcfg := MyConfig{
-        Name: "Fredrik",
-    }
+	mcfg := MyConfig{
+		Name: "Fredrik",
+	}
 
-    // mcfg.Name => Fredrik
+	// mcfg.Name => Fredrik
 
-    // Create and fill a configuration object.
-    c, err := cfg.New(&mcfg, cfg.WithData(map[string]interface{
-        "Name": "Test",
-        "URL": "https://github.com",
-    }))
+	// Create and fill a configuration object.
+	c, _ := cfg.New(&mcfg, cfg.WithData(map[string]interface{}{
+		"Name": "Test",
+		"URL":  "https://github.com",
+	}))
 
-    // mcfg.Name => Test
-    // mcfg.URL => https://github.com
+	// mcfg.Name => Test
+	// mcfg.URL => https://github.com
+	fmt.Println(mcfg.Name, mcfg.URL.String())
+	os.Setenv("TEST_NAME", "Go")
 
-    os.Setenv("TEST_NAME", "Go")
+	// Extend existing configuration object with more values.
+	c.Extend(cfg.WithEnvironment(map[string]string{
+		"Name": "TEST_NAME",
+	}))
 
-    // Extend existing configuration object with more environment values.
-    c.Extend(cfg.WithEnvironment(map[string]interface{}{
-        "Name": "TEST_NAME",
-    }))
-
-    // mcfg.Name => Go
+	// mcfg.Name => Go
 }
 ```
 
