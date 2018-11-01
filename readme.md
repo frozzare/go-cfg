@@ -8,7 +8,6 @@ A configuration package that can populate values from byte slices, key/value map
 package main
 
 import (
-	"fmt"
 	"net/url"
 	"os"
 
@@ -35,7 +34,6 @@ func main() {
 
 	// mcfg.Name => Test
 	// mcfg.URL => https://github.com
-	fmt.Println(mcfg.Name, mcfg.URL.String())
 	os.Setenv("TEST_NAME", "Go")
 
 	// Extend existing configuration object with more values.
